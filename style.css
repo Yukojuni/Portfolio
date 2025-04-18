@@ -11,6 +11,7 @@
     --shadow-color: rgba(0, 0, 0, 0.2);
     --error-color: #ef4444;
     --success-color: #10b981;
+    --focus-color: #f59e0b;
     --transition: all 0.3s ease;
 }
 
@@ -127,6 +128,27 @@ textarea:focus,
 select:focus {
     outline: 3px solid var(--accent-color);
     outline-offset: 2px;
+}
+
+/* Focus highlight for section titles */
+.focus-highlight {
+    position: relative;
+}
+
+.focus-highlight::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    height: 3px;
+    background-color: var(--focus-color);
+    animation: pulse 1.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 /* Header & Navigation */
@@ -885,11 +907,11 @@ legend {
 }
 
 .linkedin {
-    background-color: #0077B5;
+    background-color: #0071AD;
 }
 
 .email {
-    background-color: var(--accent-color);
+    background-color: #178740;
     color: #FFFFFF;
 }
 
@@ -1031,4 +1053,15 @@ footer {
 
 .project-card:nth-child(4) {
     transition-delay: 0.4s;
+}
+
+/* Tabindex -1 elements that receive focus */
+[tabindex="-1"]:focus {
+    outline: none;
+}
+
+/* Ensure focus is visible for keyboard navigation */
+:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
 }

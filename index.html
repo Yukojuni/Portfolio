@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Passer au contenu principal</a>
+    <a href="#main-content" class="skip-link" id="skip-to-content">Passer au contenu principal</a>
     
     <header role="banner">
         <nav aria-label="Navigation principale">
@@ -22,18 +22,18 @@
                 <span></span>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#home" class="active">Accueil</a></li>
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#skills">Compétences</a></li>
-                <li><a href="#projects">Projets</a></li>
-                <li><a href="#goals">Objectifs</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" class="nav-link" data-target="hero-title">Accueil</a></li>
+                <li><a href="#about" class="nav-link" data-target="about-title">À propos</a></li>
+                <li><a href="#skills" class="nav-link" data-target="skills-title">Compétences</a></li>
+                <li><a href="#projects" class="nav-link" data-target="projects-title">Projets</a></li>
+                <li><a href="#goals" class="nav-link" data-target="goals-title">Objectifs</a></li>
+                <li><a href="#contact" class="nav-link" data-target="contact-title">Contact</a></li>
             </ul>
         </nav>
         <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
     </header>
 
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
         <!-- Section Accueil -->
         <section id="home" class="hero" aria-labelledby="hero-title">
             <div class="container">
@@ -46,19 +46,23 @@
                         </div>
                     </div>
                     <div class="hero-text">
-                        <h1 id="hero-title">
-                            <span class="greeting">👋 Salut, moi c'est</span>
+                        <h1 id="hero-title" tabindex="-1">
+                            <span class="greeting"><span aria-hidden="true">👋</span> <span class="sr-only">Bonjour,</span> Salut, moi c'est</span>
                             <span class="name">Marciniak Lucas</span>
                         </h1>
                         <h2 class="dynamic-title">Etudiant en IA</h2>
                         <p class="intro">
-                            🎓 Étudiant en Bachelor 2 Informatique à Ynov Lyon<br>
-                            🤖 Passionné par l'IA, la data science et le développement web<br>
-                            📍 En recherche : stage 6 semaines & alternance 2025
+                            <span aria-hidden="true">🎓</span> <span class="sr-only">Diplôme:</span> Étudiant en Bachelor 2 Informatique à Ynov Lyon<br>
+                            <span aria-hidden="true">🤖</span> <span class="sr-only">Passion:</span> Passionné par l'IA, la data science et le développement web<br>
+                            <span aria-hidden="true">📍</span> <span class="sr-only">Recherche:</span> En recherche : stage 6 semaines & alternance 2025
                         </p>
                         <div class="cta-buttons">
-                            <a href="#" class="btn primary" aria-label="Télécharger mon CV au format PDF">📄 Télécharger mon CV</a>
-                            <a href="#contact" class="btn secondary">📬 Me contacter</a>
+                            <a href="#" class="btn primary" aria-label="Télécharger mon CV au format PDF, taille 1.2 Mo, 2 pages" download>
+                                <span aria-hidden="true">📄</span> <span class="sr-only">Document:</span> Télécharger mon CV
+                            </a>
+                            <a href="#contact" class="btn secondary nav-link" data-target="contact-title">
+                                <span aria-hidden="true">📬</span> <span class="sr-only">Contact:</span> Me contacter
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -68,12 +72,12 @@
         <!-- Section À propos -->
         <section id="about" class="about" aria-labelledby="about-title">
             <div class="container">
-                <h2 id="about-title" class="section-title">À propos</h2>
+                <h2 id="about-title" class="section-title" tabindex="-1">À propos</h2>
                 <div class="about-content">
                     <div class="about-text">
                         <p>Passionné d'informatique depuis mon plus jeune âge, j'ai toujours été fasciné par la façon dont la technologie peut transformer notre quotidien. Mon parcours à Ynov m'a permis de développer une solide base en programmation et de découvrir ma passion pour l'intelligence artificielle.</p>
                         <p>Après une première année intensive en développement, j'ai choisi de me spécialiser dans le domaine de la Data et de l'IA, où je vois un potentiel immense pour créer des solutions innovantes.</p>
-                        <p>🚀 Ce qui me motive : résoudre des problèmes complexes, apprendre continuellement, et utiliser la technologie pour avoir un impact positif.</p>
+                        <p><span aria-hidden="true">🚀</span> <span class="sr-only">Motivation:</span> Ce qui me motive : résoudre des problèmes complexes, apprendre continuellement, et utiliser la technologie pour avoir un impact positif.</p>
                         <blockquote>
                             "La curiosité est le moteur de l'innovation. Je m'efforce chaque jour d'apprendre quelque chose de nouveau."
                         </blockquote>
@@ -84,7 +88,7 @@
                             <ul class="timeline" aria-label="Chronologie de mon parcours">
                                 <li>
                                     <span class="date">2023-présent</span>
-                                    <span class="event">Bachelor Informatique - Ynov Bordeaux</span>
+                                    <span class="event">Bachelor Informatique - Ynov Lyon</span>
                                     <p>Spécialisation en Data Science et IA</p>
                                 </li>
                                 <li>
@@ -99,79 +103,86 @@
             </div>
         </section>
 
-        <!-- Section Compétences --> 
-        <section id="skills" class="skills">
+        <!-- Section Compétences -->
+        <section id="skills" class="skills" aria-labelledby="skills-title">
             <div class="container">
-                <h2 class="section-title">Compétences</h2>
+                <h2 id="skills-title" class="section-title" tabindex="-1">Compétences</h2>
                 <div class="skills-content">
-                    <!-- Langages -->
                     <div class="skills-category">
-                        <h3>Langages</h3>
-                        <div class="skill-items">
+                        <h3 id="languages-title">Langages</h3>
+                        <div class="skill-items" aria-labelledby="languages-title">
                             <div class="skill-item">
-                                <span class="skill-name">Python 🐍</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 90%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">SQL</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 75%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Golang</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 60%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Frameworks & Outils -->
-                    <div class="skills-category">
-                        <h3>Frameworks & Outils</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <span class="skill-name">Pandas / Scikit-Learn</span>
-                                <div class="skill-bar">
+                                <span class="skill-name" id="python-skill">Python</span>
+                                <div class="skill-bar" role="progressbar" aria-labelledby="python-skill" aria-valuenow="85%" aria-valuemin="0" aria-valuemax="100">
                                     <div class="skill-level" style="width: 85%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
-                                <span class="skill-name">TensorFlow / PyTorch</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 60%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Jupyter / Google Colab</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Git / GitHub</span>
-                                <div class="skill-bar">
+                                <span class="skill-name" id="js-skill">SQL</span>
+                                <div class="skill-bar" role="progressbar" aria-labelledby="js-skill" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                                     <div class="skill-level" style="width: 75%"></div>
                                 </div>
+                                <span class="sr-only">Niveau: 75%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name" id="sql-skill">Golang</span>
+                                <div class="skill-bar" role="progressbar" aria-labelledby="sql-skill" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="skill-level" style="width: 70%"></div>
+                                </div>
+                                <span class="sr-only">Niveau: 70%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name" id="html-skill">HTML/CSS</span>
+                                <div class="skill-bar" role="progressbar" aria-labelledby="html-skill" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="skill-level" style="width: 90%"></div>
+                                </div>
+                                <span class="sr-only">Niveau: 90%</span>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Soft Skills -->
                     <div class="skills-category">
-                        <h3>Soft Skills</h3>
-                        <div class="soft-skills">
+                        <h3 id="frameworks-title">Frameworks & Outils</h3>
+                        <div class="skill-items" aria-labelledby="frameworks-title">
+                            <div class="skill-item">
+                                <span class="skill-name" id="react-skill">Pandas / Scikit-Learn</span>
+                                <div class="skill-bar" role="progressbar" aria-labelledby="react-skill" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="skill-level" style="width: 65%"></div>
+                                </div>
+                                <span class="sr-only">Niveau: 65%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name" id="tailwind-skill">TensorFlow</span>
+                                <div class="skill-bar" role="progressbar" aria-labelledby="tailwind-skill" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="skill-level" style="width: 60%"></div>
+                                </div>
+                                <span class="sr-only">Niveau: 60%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name" id="flask-skill">Jupyter</span>
+                                <div class="skill-bar" role="progressbar" aria-labelledby="flask-skill" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="skill-level" style="width: 60%"></div>
+                                </div>
+                                <span class="sr-only">Niveau: 60%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name" id="tensorflow-skill">Git / GitHub</span>
+                                <div class="skill-bar" role="progressbar" aria-labelledby="tensorflow-skill" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="skill-level" style="width: 80%"></div>
+                                </div>
+                                <span class="sr-only">Niveau: 80%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skills-category">
+                        <h3 id="soft-skills-title">Soft Skills</h3>
+                        <div class="soft-skills" aria-labelledby="soft-skills-title">
                             <span class="tag">Résolution de problèmes</span>
+                            <span class="tag">Adaptabilité</span>
+                            <span class="tag">Esprit d'équipe</span>
                             <span class="tag">Curiosité</span>
                             <span class="tag">Autonomie</span>
-                            <span class="tag">Adaptabilité</span>
-                            <span class="tag">Créativité</span>
-                            <span class="tag">Esprit d'équipe</span>
                             <span class="tag">Communication</span>
-                            <span class="tag">Esprit analytique</span>
+                            <span class="tag">Créativité</span>
                             <span class="tag">Persévérance</span>
                         </div>
                     </div>
@@ -179,19 +190,18 @@
             </div>
         </section>
 
-
         <!-- Section Projets -->
         <section id="projects" class="projects" aria-labelledby="projects-title">
             <div class="container">
-                <h2 id="projects-title" class="section-title">Projets</h2>
+                <h2 id="projects-title" class="section-title" tabindex="-1">Projets</h2>
                 <div class="project-filters" role="tablist" aria-label="Filtres de projets">
-                    <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true" aria-controls="all-projects">Tous</button>
-                    <button class="filter-btn" data-filter="ia" role="tab" aria-selected="false" aria-controls="ia-projects">IA & Data</button>
-                    <button class="filter-btn" data-filter="web" role="tab" aria-selected="false" aria-controls="web-projects">Web</button>
-                    <button class="filter-btn" data-filter="iot" role="tab" aria-selected="false" aria-controls="iot-projects">IoT</button>
-                    <button class="filter-btn" data-filter="perso" role="tab" aria-selected="false" aria-controls="perso-projects">Perso</button>
+                    <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true" aria-controls="all-projects" id="all-tab">Tous</button>
+                    <button class="filter-btn" data-filter="ia" role="tab" aria-selected="false" aria-controls="ia-projects" id="ia-tab">IA & Data</button>
+                    <button class="filter-btn" data-filter="web" role="tab" aria-selected="false" aria-controls="web-projects" id="web-tab">Web</button>
+                    <button class="filter-btn" data-filter="iot" role="tab" aria-selected="false" aria-controls="iot-projects" id="iot-tab">IoT</button>
+                    <button class="filter-btn" data-filter="perso" role="tab" aria-selected="false" aria-controls="perso-projects" id="perso-tab">Perso</button>
                 </div>
-                <div class="projects-grid" id="all-projects" role="tabpanel" aria-labelledby="all-projects-tab">
+                <div class="projects-grid" id="all-projects" role="tabpanel" aria-labelledby="all-tab">
                     <article class="project-card" data-category="ia web">
                         <div class="project-image">
                             <div class="project-placeholder" aria-hidden="true">
@@ -203,8 +213,8 @@
                             <p>Plateforme d'apprentissage interactive pour le Machine Learning et Python, avec une interface immersive inspirée de la science-fiction.</p>
                             <div class="project-tech" aria-label="Technologies utilisées">
                                 <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Next.js</span>
                                 <span class="tech-tag">Machine Learning</span>
+                                <span class="tech-tag">Gestion de projet</span>
                             </div>
                             <a href="#" class="btn small" aria-label="Voir plus de détails sur le projet Stellar">Voir +</a>
                         </div>
@@ -220,7 +230,6 @@
                             <p>Développement d'une intelligence artificielle capable de jouer au jeu 2048 en utilisant des algorithmes d'apprentissage par renforcement.</p>
                             <div class="project-tech" aria-label="Technologies utilisées">
                                 <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Reinforcement Learning</span>
                                 <span class="tech-tag">NumPy</span>
                             </div>
                             <a href="#" class="btn small" aria-label="Voir plus de détails sur le projet 2048 IA">Voir +</a>
@@ -250,7 +259,7 @@
         <!-- Section Objectifs Pro -->
         <section id="goals" class="goals" aria-labelledby="goals-title">
             <div class="container">
-                <h2 id="goals-title" class="section-title">Objectifs Pro</h2>
+                <h2 id="goals-title" class="section-title" tabindex="-1">Objectifs Pro</h2>
                 <div class="goals-content">
                     <div class="goal-card">
                         <div class="goal-icon" aria-hidden="true">🎯</div>
@@ -281,7 +290,7 @@
         <!-- Section Contact -->
         <section id="contact" class="contact" aria-labelledby="contact-title">
             <div class="container">
-                <h2 id="contact-title" class="section-title">Contact</h2>
+                <h2 id="contact-title" class="section-title" tabindex="-1">Contact</h2>
                 <div class="contact-content">
                     <div class="contact-form">
                         <form aria-label="Formulaire de contact">
@@ -296,13 +305,18 @@
                                 <div id="email-error" class="error-message" role="alert" aria-live="assertive"></div>
                             </div>
                             <div class="form-group">
+                                <label for="birthdate">Date de naissance (optionnel)</label>
+                                <input type="date" id="birthdate" name="birthdate" aria-describedby="birthdate-description">
+                                <div id="birthdate-description" class="form-description">Pour des statistiques démographiques uniquement</div>
+                            </div>
+                            <div class="form-group">
                                 <label for="contact-method">Sujet</label>
                                 <select id="contact-method" name="contact-method" aria-describedby="contact-method-description">
                                     <option value="email">Stage</option>
                                     <option value="phone">Alternance</option>
                                     <option value="linkedin">Autre</option>
                                 </select>
-                                <div id="contact-method-description" class="form-description">Choisissez le sujet de votre message</div>
+                                <div id="contact-method-description" class="form-description">Choisissez votre méthode de contact préférée</div>
                             </div>
                             <div class="form-group">
                                 <label for="message" id="message-label">Message</label>
@@ -317,11 +331,6 @@
                                     <div id="newsletter-description" class="form-description">Recevez des mises à jour sur mes projets et activités</div>
                                 </div>
                             </fieldset>
-                            <div class="form-group">
-                                <label for="birthdate">Date de naissance (optionnel)</label>
-                                <input type="date" id="birthdate" name="birthdate" aria-describedby="birthdate-description">
-                                <div id="birthdate-description" class="form-description">Pour des statistiques démographiques uniquement</div>
-                            </div>
                             <div id="form-success" class="success-message" role="status" aria-live="polite"></div>
                             <button type="submit" class="btn primary">Envoyer</button>
                         </form>
@@ -334,11 +343,11 @@
                             <p>Scannez pour accéder à mon portfolio</p>
                         </div>
                         <div class="social-links" aria-label="Liens vers mes réseaux sociaux">
-                            <a href="#" class="social-link" aria-label="Visiter mon profil GitHub">
+                            <a href="#" class="social-link" aria-label="profil GitHub">
                                 <div class="social-icon github" aria-hidden="true">GH</div>
                                 <span>GitHub</span>
                             </a>
-                            <a href="#" class="social-link" aria-label="Visiter mon profil LinkedIn">
+                            <a href="#" class="social-link" aria-label="profil LinkedIn">
                                 <div class="social-icon linkedin" aria-hidden="true">IN</div>
                                 <span>LinkedIn</span>
                             </a>
@@ -362,26 +371,55 @@
     </footer>
 
     <script>
+        // Fonction pour déplacer le focus vers un élément cible
+        function moveFocusToTarget(targetId) {
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.focus();
+                // Ajouter une classe temporaire pour indiquer visuellement le focus
+                targetElement.classList.add('focus-highlight');
+                setTimeout(() => {
+                    targetElement.classList.remove('focus-highlight');
+                }, 1500);
+            }
+        }
+
+        // Gestion du lien "skip to content"
+        document.getElementById('skip-to-content').addEventListener('click', function(e) {
+            e.preventDefault();
+            moveFocusToTarget('main-content');
+        });
+
+        // Gestion des liens de navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('data-target');
+                const href = this.getAttribute('href');
+                
+                // Faire défiler jusqu'à la section
+                document.querySelector(href).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Déplacer le focus vers le titre de la section après le défilement
+                setTimeout(() => {
+                    moveFocusToTarget(targetId);
+                }, 800);
+                
+                // Fermer le menu mobile si ouvert
+                document.querySelector('.nav-links').classList.remove('active');
+                document.getElementById('navToggle').classList.remove('active');
+                document.getElementById('navToggle').setAttribute('aria-expanded', 'false');
+            });
+        });
+
         // Navigation toggle
         document.getElementById('navToggle').addEventListener('click', function() {
             const expanded = this.getAttribute('aria-expanded') === 'true' || false;
             this.setAttribute('aria-expanded', !expanded);
             document.querySelector('.nav-links').classList.toggle('active');
             this.classList.toggle('active');
-        });
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                // Close mobile menu if open
-                document.querySelector('.nav-links').classList.remove('active');
-                document.getElementById('navToggle').classList.remove('active');
-                document.getElementById('navToggle').setAttribute('aria-expanded', 'false');
-            });
         });
 
         // Active nav link on scroll
@@ -427,16 +465,32 @@
                 this.classList.add('active');
                 this.setAttribute('aria-selected', 'true');
                 
+                // Annoncer le changement de filtre pour les lecteurs d'écran
+                const liveRegion = document.createElement('div');
+                liveRegion.setAttribute('aria-live', 'polite');
+                liveRegion.classList.add('sr-only');
+                document.body.appendChild(liveRegion);
+                
                 // Filter projects
+                let visibleCount = 0;
                 document.querySelectorAll('.project-card').forEach(card => {
                     if (filter === 'all' || card.dataset.category.includes(filter)) {
                         card.style.display = 'block';
                         card.removeAttribute('aria-hidden');
+                        visibleCount++;
                     } else {
                         card.style.display = 'none';
                         card.setAttribute('aria-hidden', 'true');
                     }
                 });
+                
+                // Annoncer le nombre de projets visibles
+                liveRegion.textContent = `Filtre ${this.textContent} appliqué. ${visibleCount} projets affichés.`;
+                
+                // Supprimer la région live après l'annonce
+                setTimeout(() => {
+                    document.body.removeChild(liveRegion);
+                }, 1000);
             });
         });
 
@@ -515,10 +569,31 @@
                     document.getElementById('form-success').textContent = 'Votre message a été envoyé avec succès!';
                     form.reset();
                     
+                    // Annoncer le succès pour les lecteurs d'écran
+                    const successAnnouncement = document.createElement('div');
+                    successAnnouncement.setAttribute('role', 'status');
+                    successAnnouncement.setAttribute('aria-live', 'assertive');
+                    successAnnouncement.classList.add('sr-only');
+                    successAnnouncement.textContent = 'Formulaire envoyé avec succès. Merci pour votre message.';
+                    document.body.appendChild(successAnnouncement);
+                    
                     // Clear success message after 5 seconds
                     setTimeout(function() {
                         document.getElementById('form-success').textContent = '';
+                        document.body.removeChild(successAnnouncement);
                     }, 5000);
+                } else {
+                    // Annoncer les erreurs pour les lecteurs d'écran
+                    const errorAnnouncement = document.createElement('div');
+                    errorAnnouncement.setAttribute('role', 'alert');
+                    errorAnnouncement.setAttribute('aria-live', 'assertive');
+                    errorAnnouncement.classList.add('sr-only');
+                    errorAnnouncement.textContent = 'Le formulaire contient des erreurs. Veuillez les corriger avant de soumettre.';
+                    document.body.appendChild(errorAnnouncement);
+                    
+                    setTimeout(() => {
+                        document.body.removeChild(errorAnnouncement);
+                    }, 1000);
                 }
             });
         }
